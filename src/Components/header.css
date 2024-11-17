@@ -1,0 +1,54 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #282c34;
+  color: white;
+}
+
+.burger-menu {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.header-logo {
+  height: 40px;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.language-selector {
+  background-color: #fff;
+  color: #282c34;
+  border: 1px solid #ccc;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.menu {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin: 0.5rem 0;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
