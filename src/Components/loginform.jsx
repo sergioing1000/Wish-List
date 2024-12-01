@@ -17,12 +17,12 @@ const LoginForm = () => {
     <div
       style={{
         maxWidth: "240px",
-        height: "600px",
+        // height: "400px",
         margin: "auto",
         marginTop: "30px",
         padding: "20px",
         border: "1px solid #000000",
-        borderRadius: "10px",
+        borderRadius: "5px",
         background: "#FFFFFF",
         boxShadow: "3px 3px 10px rgba(0, 0, 0, 0.4)",
       }}
@@ -79,7 +79,7 @@ const LoginForm = () => {
               border: "1px solid #ccc",
               display: "flex",
               alignContent: "center",
-              alignItems: "center"
+              alignItems: "center",
             }}
           />
         </div>
@@ -117,7 +117,7 @@ const LoginForm = () => {
               backgroundColor: "#4BF218",
               color: "white",
               bordercolor: "black",
-              borderRadius: "8px",
+              borderRadius: "5px",
               cursor: "pointer",
               boxShadow: "3px 3px 10px rgba(0, 0, 0, 0.4)",
             }}
@@ -131,16 +131,37 @@ const LoginForm = () => {
           <a
             href="/forgot"
             style={{
-              marginRight: "10px",
+              marginTop: "30px",
               textDecoration: "none",
               color: "#007BFF",
+              fontFamily: "HachiMaruPop",
+              fontSize: "12px",
+              display: "block",
             }}
           >
-            Forgot Username/Password?
+            Forgot Username / Password?
           </a>
+          <span
+            style={{
+              marginTop: "10px",
+              textDecoration: "none",
+              color: "black",
+              fontFamily: "HachiMaruPop",
+              fontSize: "12px",
+              display: "block",
+            }}
+          >
+            Don’t Have an account?
+          </span>
           <a
             href="/signup"
-            style={{ textDecoration: "none", color: "#007BFF" }}
+            style={{
+              textDecoration: "none",
+              color: "#007BFF",
+              fontFamily: "HachiMaruPop",
+              fontSize: "12px",
+              display: "block",
+            }}
           >
             Sign Up
           </a>
