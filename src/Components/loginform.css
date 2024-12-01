@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'HachiMaruPop';
+  src: url('./assets/fonts/HachiMaruPop-Regular.ttf') format('truetype');
+}
+
+.Login_title{
+
+    font-family: HachiMaruPop;
+    font-size: larger;
+    font-weight: 800;
+    font-size: smaller;
+}

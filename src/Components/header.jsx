@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import "./Header.css"; 
+import "./Header.css";
+
+import pencilSvg from "../assets/icons/pencil.svg";
+import worldsvg from "../assets/icons/world.svg";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -7,30 +10,27 @@ function Header() {
   return (
     <header className="header">
       <div className="header-content">
-        {/* Burger Menu */}
-        <button
-          className="burger-menu"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          ☰
-        </button>
+        <div className="header_left">
+          <button
+            className="burger-menu"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            ☰
+          </button>
+          <h1 className="header-title">Wish List</h1>
 
-        {/* Logo */}
-        <img
-          src="/path-to-your-logo/logo.svg"
-          alt="Logo"
-          className="header-logo"
-        />
+          <img src={pencilSvg} alt="Pencil Icon" height={30} />
+        </div>
 
-        {/* Title */}
-        <h1 className="header-title">My Application</h1>
-
-        {/* Language Selector */}
-        <select className="language-selector">
-          <option value="en">English</option>
-          <option value="es">Español</option>
-          <option value="fr">Français</option>
-        </select>
+        <div className="header_right">
+          <img src={worldsvg} alt="Pencil Icon" height={30} />
+          {/* Language Selector */}
+          <select className="language-selector">
+            <option value="en">En</option>
+            <option value="es">Es</option>
+            <option value="fr">Fr</option>
+          </select>
+        </div>
       </div>
 
       {/* Optional: Render the menu if open */}

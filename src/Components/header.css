@@ -1,10 +1,13 @@
+@font-face {
+  font-family: 'HachiMaruPop';
+  src: url('../assets/fonts/HachiMaruPop-Regular.ttf') format('truetype');
+}
+
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 1rem;
-  background-color: #282c34;
+  background-color: #3C344F;
   color: white;
+  font-family: HachiMaruPop;
 }
 
 .burger-menu {
@@ -20,16 +23,31 @@
 }
 
 .header-title {
+
   margin: 0;
   font-size: 1.5rem;
+
 }
 
+.header-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.header_left{
+  display: flex;
+}
+
+.header_right{
+  display: flex;
+}
 .language-selector {
-  background-color: #fff;
-  color: #282c34;
-  border: 1px solid #ccc;
+  background-color:  #3C344F;
+  color: #FFFFFF;
+  border: none;
   padding: 0.25rem;
-  border-radius: 4px;
 }
 
 .menu {
