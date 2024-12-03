@@ -34,7 +34,7 @@ const CrudTable = () => {
       <div className="CrudTableContainer2">
         <table className="CrudTable">
           <thead className="TableHeader">
-            <tr>
+            <tr className="TableHeader">
               <th style={{ width: "58%", textAlign: "center" }}>Description</th>
               <th style={{ width: "12%", textAlign: "center" }}>Qty</th>
               <th style={{ width: "30%", textAlign: "center" }}>Actions</th>
