@@ -1,17 +1,32 @@
 import React, { useState } from "react";
 import "./loginform.css";
 
-const LoginForm = () => {
+function LoginForm ({ onLoginSuccess }){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle login logic here
-    console.log("Username:", username);
-    console.log("Password:", password);
-  };
+  const [isVisible, setIsVisible] = useState(true);
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+
+      // Perform login logic here
+      if (username === "user" && password === "password") {
+        // Call the function passed as a prop to notify App component
+        onLoginSuccess();
+        console.log("Username:", username);
+        console.log("Password:", password);
+
+      setIsVisible(false);
+      } else {
+        alert("Invalid credentials");
+      }
+
+    };
+
+
+  if (!isVisible) return null;
 
   return (
     <div
@@ -170,5 +185,6 @@ const LoginForm = () => {
     </div>
   );
 };
+
 
 export default LoginForm;

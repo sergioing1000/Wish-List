@@ -25,7 +25,12 @@ function Header() {
         <div className="header_right">
           <img src={worldsvg} alt="Pencil Icon" height={30} />
           {/* Language Selector */}
-          <select className="language-selector">
+          <select
+            className="language-selector"
+            style={{
+              fontFamily: "HachiMaruPop"
+            }}
+          >
             <option value="en">En</option>
             <option value="es">Es</option>
             <option value="fr">Fr</option>
