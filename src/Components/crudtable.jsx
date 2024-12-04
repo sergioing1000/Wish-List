@@ -15,8 +15,11 @@ const CrudTable = () => {
   const addRow = () => {
     const newRow = ["New Item", "0"];
     setRows((prevRows) => [...prevRows, newRow]);
-    
   };
+
+  const saveItems = () => {
+      console.log(rows)
+  }
 
   const editRow = (rowIndex) => {
     setEditIndex(rowIndex);
@@ -44,11 +47,17 @@ const CrudTable = () => {
     setRows((prevRows) => prevRows.filter((_, index) => index !== rowIndex));
   };
 
+  let rowCount = rows.length;
+
   return (
     <>
       <div className="CrudTableContainer1">
-        <button className="crudTableButton" onClick={addRow}>
+        <button className="crudTableAddButton" onClick={addRow}>
           Add
+        </button>
+
+        <button className="crudTableSaveButton" onClick={saveItems}>
+          Save {rowCount} items
         </button>
       </div>
 

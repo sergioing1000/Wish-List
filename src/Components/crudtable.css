@@ -5,7 +5,8 @@
 
 .CrudTableContainer1{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
     margin-top: 20px;
     font-family: HachiMaruPop;
 }
@@ -18,11 +19,23 @@
     font-family: HachiMaruPop;
 }
 
-.crudTableButton{
+.crudTableAddButton{
     width: 80px;
     padding: 10px;
     background-color: #4BF218;
-    color: "white";
+    color: black;
+    border-color: black;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+    font-family: HachiMaruPop;
+}
+
+.crudTableSaveButton{
+    width: 150px;
+    padding: 10px;
+    background-color: #E9E6EF;
+    color: black;
     border-color: black;
     border-radius: 5px;
     cursor: pointer;
@@ -48,11 +61,11 @@
 
 
 .TableRow tr:nth-child(odd) {
-  background-color: #f2f2f2; /* Light background for odd rows */
+  background-color: #f2f2f2;
 }
 
 tr:nth-child(even) {
-  background-color: #cccccc6c; /* Dark background for even rows */
+  background-color: #cccccc6c;
 }
 
 .AcctionsRow{
