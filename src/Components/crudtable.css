@@ -55,10 +55,24 @@ tr:nth-child(even) {
   background-color: #cccccc6c; /* Dark background for even rows */
 }
 
-
 .AcctionsRow{
     display: flex;
     justify-content: space-around;
+}
+
+.custom_text_input{
+    width: 90%;
+    border: 2px solid #365D81;
+    border-radius: 5px;
+    font-family: HachiMaruPop;
+}
+
+.custom_number_input{
+    width: 50%;
+    border: 2px solid #365D81;
+    border-radius: 5px;
+    font-family: HachiMaruPop;
+    align-self: center;
 }
 
 .editButton{
