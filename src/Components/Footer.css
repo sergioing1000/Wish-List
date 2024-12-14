@@ -1,0 +1,28 @@
+
+.footer_container{
+    background-color:#3C344F;
+    color: white;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.footer_container ul{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    list-style-type:none;
+
+}
+
+.Footer_List{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.Footer_List p{
+    margin: 0px;;
+}

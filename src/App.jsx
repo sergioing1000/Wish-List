@@ -1,7 +1,10 @@
-import './App.css'
-import Header from './Components/header';
+import Header from './Components/header.jsx';
 import LoginForm from "./Components/loginform.jsx";
 import CrudTable from "./Components/crudtable.jsx";
+import Footer from "./Components/footer.jsx";
+
+import "./App.css";
+
 import { useState } from "react";
 
 function App() {
@@ -20,7 +23,8 @@ function App() {
 
       {!isLoggedIn && <LoginForm onLoginSuccess={handleLoginSuccess} />}
       {isLoggedIn && <CrudTable />}
-      
+
+      <Footer></Footer>
     </>
   );
 }

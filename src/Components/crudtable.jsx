@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import "./crudtable.css";
 
 const CrudTable = () => {
-  const [rows, setRows] = useState([
-    ["Apples", "5"],
-    ["Lettuce", "3"],
-    ["BBQ Sauce", "2"],
-    ["Hair Spray", "1"],
-  ]);
-
+  
+  const [rows, setRows] = useState([]);
   const [editIndex, setEditIndex] = useState(null); // Index of the row being edited
   const [editForm, setEditForm] = useState(["", ""]); // Form state for editing
+
+
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get("http://localhost:5127/api/items");
+      console.log(response.data);
+      setRows(response.data);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+      alert("Error fetching items:");
+    }
+  };
+
+  useEffect(() => {
+    fetchItems();
+  }, []); 
 
   const addRow = () => {
     const newRow = ["New Item", "0"];
@@ -18,8 +30,8 @@ const CrudTable = () => {
   };
 
   const saveItems = () => {
-      console.log(rows)
-  }
+    console.log(rows);
+  };
 
   const editRow = (rowIndex) => {
     setEditIndex(rowIndex);
