@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Header.css";
+import "./header.css";
 
 import pencilSvg from "../assets/icons/pencil.svg";
 import worldsvg from "../assets/icons/world.svg";
