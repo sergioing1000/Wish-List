@@ -20,6 +20,17 @@ const CrudTable = () => {
     }
   };
 
+  const postData = async () => {
+    try {
+      const response = await axios.post("http://localhost:5127/api/save", {
+        rows
+      });
+      console.log("Data saved successfully:", response.data);
+    } catch (error) {
+      console.error("There was an error:", error);
+    }
+  };
+
   useEffect(() => {
     fetchItems();
   }, []); 
@@ -31,6 +42,7 @@ const CrudTable = () => {
 
   const saveItems = () => {
     console.log(rows);
+    postData();
   };
 
   const editRow = (rowIndex) => {
