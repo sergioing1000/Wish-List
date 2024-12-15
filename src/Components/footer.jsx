@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import "./Footer.css";
+import "./footer.css";
 
 import facebook from "../assets/icons/facebook.svg";
 import instagram from "../assets/icons/instagram.svg";
