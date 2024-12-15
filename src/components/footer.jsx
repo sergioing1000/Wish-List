@@ -4,7 +4,7 @@ import "./footer.css";
 
 import facebook from "../assets/icons/facebook.svg";
 import instagram from "../assets/icons/instagram.svg";
-import X from "../assets/icons/x.svg";
+import x from "../assets/icons/x.svg";
 import linkedIn from "../assets/icons/linkedIn.svg";
 
 
@@ -49,7 +49,7 @@ function footer() {
             <img src={facebook} alt="facebook" />
             <img src={instagram} alt="instagram" />
             <img src={linkedIn} alt="linkedIn" />
-            <img src={X} alt="X" />
+            <img src={x} alt="X" />
           </div>
         </li>
       </ul>
