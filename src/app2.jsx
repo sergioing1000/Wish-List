@@ -1,9 +1,9 @@
-import Header from './Components/header.jsx';
-import LoginForm from "./Components/loginform.jsx";
-import CrudTable from "./Components/crudtable.jsx";
-import Footer from "./Components/footer.jsx";
+import Header from './components/header.jsx';
+import LoginForm from "./components/loginform.jsx";
+import CrudTable from "./components/crudtable.jsx";
+import Footer from "./components/footer.jsx";
 
-import "./App.css";
+import "./app.css";
 
 import { useState } from "react";
 
