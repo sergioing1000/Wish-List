@@ -3,9 +3,9 @@ import axios from "axios";
 import "./Footer.css";
 
 import facebook from "../assets/icons/facebook.svg";
-import instagram from "../assets/icons/Instagram.svg";
+import instagram from "../assets/icons/instagram.svg";
 import X from "../assets/icons/x.svg";
-import LinkedIn from "../assets/icons/LinkedIn.svg";
+import LinkedIn from "../assets/icons/linkedIn.svg";
 
 function footer() {
   
