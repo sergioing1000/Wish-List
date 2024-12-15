@@ -1,11 +1,11 @@
-import axios from "axios";
+
 
 import "./footer.css";
 
 import facebook from "../assets/icons/facebook.svg";
 import instagram from "../assets/icons/instagram.svg";
 import X from "../assets/icons/x.svg";
-import LinkedIn from "../assets/icons/linkedIn.svg";
+import linkedIn from "../assets/icons/linkedIn.svg";
 
 
 
@@ -48,7 +48,7 @@ function footer() {
           <div>
             <img src={facebook} alt="facebook" />
             <img src={instagram} alt="instagram" />
-            <img src={LinkedIn} alt="LinkedIn" />
+            <img src={linkedIn} alt="linkedIn" />
             <img src={X} alt="X" />
           </div>
         </li>
