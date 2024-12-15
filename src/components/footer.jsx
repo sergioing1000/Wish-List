@@ -5,7 +5,7 @@ import "./footer.css";
 import facebook from "../assets/icons/facebook.svg";
 import instagram from "../assets/icons/instagram.svg";
 import x from "../assets/icons/x.svg";
-import linkedIn from "../assets/icons/linkedIn.svg";
+import linkedIn from "../assets/icons/linkedin.svg";
 
 
 
