@@ -7,8 +7,10 @@ import instagram from "../assets/icons/instagram.svg";
 import X from "../assets/icons/x.svg";
 import LinkedIn from "../assets/icons/linkedIn.svg";
 
+
+
 function footer() {
-  
+
   return (
     <div className="footer_container">
       <ul>
