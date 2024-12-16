@@ -12,7 +12,11 @@ const CrudTable = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        "https://wish-list-7v3y2kzvn-sergioing1000s-projects.vercel.app/api/items"        
+        "https://wish-list-7v3y2kzvn-sergioing1000s-projects.vercel.app/api/items",
+        {
+        headers: {
+            'Content-Type': 'application/json',
+      }}
       );
       console.log(response.data);
       setRows(response.data);
