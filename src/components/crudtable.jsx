@@ -22,6 +22,7 @@ const CrudTable = () => {
         }
       );
       setRows(response.data);
+      console.log("Data", response.data)
     } catch (error) {
       console.error(
         "Error fetching items:",
