@@ -30,9 +30,13 @@ const CrudTable = () => {
 
   const postData = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/api/save", {
-        rows
-      });
+      // const response = await axios.post("http://localhost:3000/api/save", {
+      const response = await axios.post(
+        "https://wish-list-7v3y2kzvn-sergioing1000s-projects.vercel.app/api/save",
+        {
+          rows,
+        }
+      );
       console.log("Data saved successfully:", response.data);
     } catch (error) {
       console.error("There was an error:", error);
