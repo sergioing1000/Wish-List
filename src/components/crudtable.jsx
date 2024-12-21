@@ -9,28 +9,54 @@ const CrudTable = () => {
   const [editForm, setEditForm] = useState(["", ""]); // Form state for editing
 
 
+
   const fetchItems = async () => {
     try {
       const response = await axios.get(
         "https://wish-list-14gjchp5n-sergioing1000s-projects.vercel.app/api/items",
-        // "http://localhost:5127/api/items",
         {
-          withCredentials: true,
+          withCredentials: true, // Enable credentials if needed
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
-      console.log("Data:", response.data);
       setRows(response.data);
     } catch (error) {
       console.error(
-        "Error:",
+        "Error fetching items:",
         error.response ? error.response.data : error.message
       );
-      alert("Error fetching items:");
+      alert("Error fetching items.");
     }
   };
+
+
+  
+
+
+  // const fetchItems = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "https://wish-list-14gjchp5n-sergioing1000s-projects.vercel.app/api/items",
+  //       // "http://localhost:5127/api/items",
+  //       {
+  //         withCredentials: true,
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     console.log("Data:", response.data);
+  //     setRows(response.data);
+  //   } catch (error) {
+  //     console.error(
+  //       "Error:",
+  //       error.response ? error.response.data : error.message
+  //     );
+  //     alert("Error fetching items:");
+  //   }
+  // };
 
   const postData = async () => {
     try {
