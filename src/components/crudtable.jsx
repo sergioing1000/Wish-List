@@ -15,15 +15,19 @@ const CrudTable = () => {
         "https://wish-list-7v3y2kzvn-sergioing1000s-projects.vercel.app/api/items",
         // "http://localhost:5127/api/items",
         {
+          withCredentials: true,
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
-      console.log(response.data);
+      console.log("Data:", response.data);
       setRows(response.data);
     } catch (error) {
-      console.error("Error fetching items:", error);
+      console.error(
+        "Error:",
+        error.response ? error.response.data : error.message
+      );
       alert("Error fetching items:");
     }
   };
