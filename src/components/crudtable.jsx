@@ -12,8 +12,8 @@ const CrudTable = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        // "https://wish-list-7v3y2kzvn-sergioing1000s-projects.vercel.app/api/items",
-        "http://localhost:5127/api/items",
+        "https://wish-list-7v3y2kzvn-sergioing1000s-projects.vercel.app/api/items",
+        // "http://localhost:5127/api/items",
         {
           headers: {
             "Content-Type": "application/json",
