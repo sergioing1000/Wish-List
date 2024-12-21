@@ -13,9 +13,8 @@ const CrudTable = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        "https://wish-list-kwdeyunvc-sergioing1000s-projects.vercel.app/api/items",
+        "https://wish-list-3owkuw8pj-sergioing1000s-projects.vercel.app/api/items",
         {
-          withCredentials: true, // Enable credentials if needed
           headers: {
             "Content-Type": "application/json",
           },
@@ -61,9 +60,9 @@ const CrudTable = () => {
 
   const postData = async () => {
     try {
-      // const response = await axios.post("http://localhost:3000/api/save", {
+      // "http://localhost:3000/api/save", {
       const response = await axios.post(
-        "https://wish-list-kwdeyunvc-sergioing1000s-projects.vercel.app/save",
+        "https://wish-list-3owkuw8pj-sergioing1000s-projects.vercel.app/api/save",
         {
           rows,
         }
