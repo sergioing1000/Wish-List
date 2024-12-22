@@ -13,8 +13,7 @@ const CrudTable = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/items",
-        // "https://wish-list-3owkuw8pj-sergioing1000s-projects.vercel.app/api/items",
+        "https://wish-list-e5czbbx60-sergioing1000s-projects.vercel.app/api/items",
         //zzz CORS
         // {
         //   headers: {
@@ -63,8 +62,7 @@ const CrudTable = () => {
   const postData = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000",
-        // "https://wish-list-3owkuw8pj-sergioing1000s-projects.vercel.app/api/save",
+        "https://wish-list-e5czbbx60-sergioing1000s-projects.vercel.app/api/save",
         {
           rows,
         }
