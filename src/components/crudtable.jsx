@@ -26,6 +26,8 @@ const CrudTable = () => {
 
 
   const postData = async () => {
+    console.log("Segundo log")
+    console.log(rows)
     try {
       const response = await axios.post(
         "https://wish-list-bay.vercel.app/api/save",
