@@ -5,21 +5,13 @@ import "./crudtable.css";
 const CrudTable = () => {
   
   const [rows, setRows] = useState([]);
-  const [editIndex, setEditIndex] = useState(null); // Index of the row being edited
-  const [editForm, setEditForm] = useState(["", ""]); // Form state for editing
-
-
+  const [editIndex, setEditIndex] = useState(null);
+  const [editForm, setEditForm] = useState(["", ""]);
 
   const fetchItems = async () => {
     try {
       const response = await axios.get(
         "https://wish-list-bay.vercel.app/api/items"
-        //zzz CORS
-        // {
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        // }
       );
       setRows(response.data);
       console.log("Data", response.data)
@@ -32,32 +24,6 @@ const CrudTable = () => {
     }
   };
 
-
-  
-
-
-  // const fetchItems = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "https://wish-list-14gjchp5n-sergioing1000s-projects.vercel.app/api/items",
-  //       // "http://localhost:5127/api/items",
-  //       {
-  //         withCredentials: true,
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-  //     console.log("Data:", response.data);
-  //     setRows(response.data);
-  //   } catch (error) {
-  //     console.error(
-  //       "Error:",
-  //       error.response ? error.response.data : error.message
-  //     );
-  //     alert("Error fetching items:");
-  //   }
-  // };
 
   const postData = async () => {
     try {
@@ -89,18 +55,18 @@ const CrudTable = () => {
 
   const editRow = (rowIndex) => {
     setEditIndex(rowIndex);
-    setEditForm(rows[rowIndex]); // Initialize form with the current row's values
+    setEditForm(rows[rowIndex]);
   };
 
   const saveEdit = () => {
     setRows((prevRows) =>
       prevRows.map((row, index) => (index === editIndex ? editForm : row))
     );
-    setEditIndex(null); // Exit edit mode
+    setEditIndex(null);
   };
 
   const cancelEdit = () => {
-    setEditIndex(null); // Exit edit mode without saving
+    setEditIndex(null);
   };
 
   const handleInputChange = (e, fieldIndex) => {
