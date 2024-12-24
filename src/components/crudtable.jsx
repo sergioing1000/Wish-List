@@ -36,7 +36,7 @@ const CrudTable = () => {
 
       const headers = {
         "Content-Type": "application/json", // Specify the content type
-        Authorization: `Bearer ${yourToken}`, // Replace `yourToken` with the actual token if needed
+        Authorization: `Bearer `, // Replace `yourToken` with the actual token if needed
       };
 
       const response = await axios.post(
