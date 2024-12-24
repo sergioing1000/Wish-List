@@ -33,12 +33,17 @@ const CrudTable = () => {
     await new Promise((resolve) => setTimeout(resolve, 3000));
     
     try {
+
+      const headers = {
+        "Content-Type": "application/json", // Specify the content type
+        Authorization: `Bearer ${yourToken}`, // Replace `yourToken` with the actual token if needed
+      };
+
       const response = await axios.post(
         "https://wish-list-bay.vercel.app/api/save",
         // "http://localhost:3000/api/save",
-        {
-          rows,
-        }
+        { rows },
+        { headers }
       );
       console.log("Data saved successfully:", response.data);
 
