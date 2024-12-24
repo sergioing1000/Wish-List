@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 import "./loginform.css";
 
 function LoginForm ({ onLoginSuccess }){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
   const [isVisible, setIsVisible] = useState(true);
 
     const handleSubmit = (e) => {
@@ -18,9 +18,34 @@ function LoginForm ({ onLoginSuccess }){
         console.log("Username:", username);
         console.log("Password:", password);
 
-      setIsVisible(false);
+        // Show SweetAlert2 Toast
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "center",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully! ✔️",
+        });
+
+        setIsVisible(false);
       } else {
-        alert("Invalid credentials");
+
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Invalid credentials!!",
+        });
+
+        //alert("Invalid credentials");
       }
 
     };

@@ -1,20 +1,23 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Swal from "sweetalert2";
+import { Watch } from "react-loader-spinner";
 import "./crudtable.css";
 
 const CrudTable = () => {
-  
   const [rows, setRows] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [editForm, setEditForm] = useState(["", ""]);
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const fetchItems = async () => {
     try {
       const response = await axios.get(
         "https://wish-list-bay.vercel.app/api/items"
+        // "http://localhost:3000/api/items"
       );
       setRows(response.data);
-      console.log("Data", response.data)
+      console.log("Data", response.data);
     } catch (error) {
       console.error(
         "Error fetching items:",
@@ -24,26 +27,36 @@ const CrudTable = () => {
     }
   };
 
-
   const postData = async () => {
-    console.log("Segundo log")
-    console.log(rows)
+    console.log(rows);
+    setLoading(true); // Start loading
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+    
     try {
       const response = await axios.post(
         "https://wish-list-bay.vercel.app/api/save",
+        // "http://localhost:3000/api/save",
         {
           rows,
         }
       );
       console.log("Data saved successfully:", response.data);
+
+      Swal.fire({
+        title: "Data saved successfully",
+        text: response.data.receivedData.rows.length + " Items Saved. ✔️",
+        icon: "success",
+      });
     } catch (error) {
       console.error("There was an error:", error);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
   useEffect(() => {
     fetchItems();
-  }, []); 
+  }, []);
 
   const addRow = () => {
     const newRow = ["New Item", "0"];
@@ -85,82 +98,105 @@ const CrudTable = () => {
 
   return (
     <>
-      <div className="CrudTableContainer1">
-        <button className="crudTableAddButton" onClick={addRow}>
-          Add
-        </button>
+      {loading ? ( // Render the spinner while loading
+        <div className="spinner-container">
+          <Watch
+            visible={true}
+            height="80"
+            width="80"
+            radius="48"
+            color="#4fa94d"
+            ariaLabel="watch-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
+          <p>Saving...</p>
+        </div>
+      ) : (
+        <>
+          <div className="CrudTableContainer1">
+            <button className="crudTableAddButton" onClick={addRow}>
+              Add
+            </button>
 
-        <button className="crudTableSaveButton" onClick={saveItems}>
-          Save {rowCount} items
-        </button>
-      </div>
+            <button className="crudTableSaveButton" onClick={saveItems}>
+              Save {rowCount} items
+            </button>
+          </div>
 
-      <div className="CrudTableContainer2">
-        <table className="CrudTable">
-          <thead className="TableHeader">
-            <tr className="TableHeader">
-              <th style={{ width: "68%", textAlign: "center" }}>Description</th>
-              <th style={{ width: "12%", textAlign: "center" }}>Qty</th>
-              <th style={{ width: "20%", textAlign: "center" }}>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row, rowIndex) => (
-              <tr className="TableRow" key={rowIndex}>
-                {editIndex === rowIndex ? (
-                  <>
-                    <td>
-                      <input
-                        type="text"
-                        value={editForm[0]}
-                        onChange={(e) => handleInputChange(e, 0)}
-                        className="custom_text_input"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="number"
-                        value={editForm[1]}
-                        min="0"
-                        max="100"
-                        onChange={(e) => handleInputChange(e, 1)}
-                        className="custom_number_input"
-                      />
-                    </td>
-                    <td className="AcctionsRow">
-                      <button className="editButton" onClick={saveEdit}>
-                        Save
-                      </button>
-                      <button className="deleteButton" onClick={cancelEdit}>
-                        Cancel
-                      </button>
-                    </td>
-                  </>
-                ) : (
-                  <>
-                    <td style={{ textAlign: "left" }}>{row[0]}</td>
-                    <td style={{ textAlign: "center" }}>{row[1]}</td>
-                    <td className="AcctionsRow" style={{ textAlign: "center" }}>
-                      <button
-                        className="editButton"
-                        onClick={() => editRow(rowIndex)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="deleteButton"
-                        onClick={() => deleteRow(rowIndex)}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </>
-                )}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          <div className="CrudTableContainer2">
+            <table className="CrudTable">
+              <thead className="TableHeader">
+                <tr className="TableHeader">
+                  <th style={{ width: "68%", textAlign: "center" }}>
+                    Description
+                  </th>
+                  <th style={{ width: "12%", textAlign: "center" }}>Qty</th>
+                  <th style={{ width: "20%", textAlign: "center" }}>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row, rowIndex) => (
+                  <tr className="TableRow" key={rowIndex}>
+                    {editIndex === rowIndex ? (
+                      <>
+                        <td>
+                          <input
+                            type="text"
+                            value={editForm[0]}
+                            onChange={(e) => handleInputChange(e, 0)}
+                            className="custom_text_input"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="number"
+                            value={editForm[1]}
+                            min="0"
+                            max="100"
+                            onChange={(e) => handleInputChange(e, 1)}
+                            className="custom_number_input"
+                          />
+                        </td>
+                        <td className="AcctionsRow">
+                          <button className="editButton" onClick={saveEdit}>
+                            Save
+                          </button>
+                          <button className="deleteButton" onClick={cancelEdit}>
+                            Cancel
+                          </button>
+                        </td>
+                      </>
+                    ) : (
+                      <>
+                        <td style={{ textAlign: "left" }}>{row[0]}</td>
+                        <td style={{ textAlign: "center" }}>{row[1]}</td>
+                        <td
+                          className="AcctionsRow"
+                          style={{ textAlign: "center" }}
+                        >
+                          <button
+                            className="editButton"
+                            onClick={() => editRow(rowIndex)}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            className="deleteButton"
+                            onClick={() => deleteRow(rowIndex)}
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </>
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
     </>
   );
 };

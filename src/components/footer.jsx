@@ -1,5 +1,3 @@
-
-
 import "./footer.css";
 
 import facebook from "../assets/icons/facebook.svg";
