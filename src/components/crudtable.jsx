@@ -16,9 +16,7 @@ const CrudTable = () => {
       baseURL: "https://wish-list-bay.vercel.app",
       headers: {
         "Content-Type": "application/json",
-      },
-      // Enable sending credentials if needed (cookies, etc)
-      withCredentials: true,
+      }
     });
 
     try {
