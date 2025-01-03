@@ -45,18 +45,22 @@ const CrudTable = () => {
 
     const yourToken = "abcabc";
 
+    // Create axios instance with default config
+    const api = axios.create({
+      baseURL: "https://wish-list-bay.vercel.app",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     try {
-      const headers = {
-        "Content-Type": "application/json", // Specify the content type
-        Authorization: `Bearer ${yourToken}`, // Replace `yourToken` with the actual token if needed
-      };
+      const response = await api.post("api/save", { rows });
 
-      const response = await axios.post(
-        "https://wish-list-bay.vercel.app/api/save",
-        { rows },
-        { headers }
-      );
+      // const response = await axios.post(
+      //   "https://wish-list-bay.vercel.app/api/save",
+      //   { rows }
+      // );
+
       console.log("Data saved successfully:", response.data);
 
       Swal.fire({
