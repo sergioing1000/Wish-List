@@ -11,10 +11,24 @@ const CrudTable = () => {
   const [loading, setLoading] = useState(false); // Add loading state
 
   const fetchItems = async () => {
+    // Create axios instance with default config
+    const api = axios.create({
+      baseURL: "https://wish-list-bay.vercel.app",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // Enable sending credentials if needed (cookies, etc)
+      withCredentials: true,
+    });
+
     try {
-      const response = await axios.get(
-        "https://wish-list-bay.vercel.app/api/items"
-      );
+
+      const response = await api.post("/api/items");
+
+      // const response = await axios.get(
+      //   "https://wish-list-bay.vercel.app/api/items"
+      // );
+
       setRows(response.data);
       console.log("Data", response.data);
     } catch (error) {
@@ -32,9 +46,9 @@ const CrudTable = () => {
     await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const yourToken = "abcabc";
-    
-    try {
 
+
+    try {
       const headers = {
         "Content-Type": "application/json", // Specify the content type
         Authorization: `Bearer ${yourToken}`, // Replace `yourToken` with the actual token if needed
