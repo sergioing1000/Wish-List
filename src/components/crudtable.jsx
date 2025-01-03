@@ -14,7 +14,6 @@ const CrudTable = () => {
     try {
       const response = await axios.get(
         "https://wish-list-bay.vercel.app/api/items"
-        // "http://localhost:3000/api/items"
       );
       setRows(response.data);
       console.log("Data", response.data);
@@ -43,7 +42,6 @@ const CrudTable = () => {
 
       const response = await axios.post(
         "https://wish-list-bay.vercel.app/api/save",
-        // "http://localhost:3000/api/save",
         { rows },
         { headers }
       );
