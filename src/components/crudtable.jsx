@@ -21,7 +21,7 @@ const CrudTable = () => {
 
     try {
 
-      const response = await api.post("/api/items");
+      const response = await api.get("/api/items");
 
       // const response = await axios.get(
       //   "https://wish-list-bay.vercel.app/api/items"
