@@ -41,7 +41,7 @@ const CrudTable = () => {
   const postData = async () => {
     console.log(rows);
     setLoading(true); // Start loading
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     // Create axios instance with default config
     const api = axios.create({
@@ -49,7 +49,6 @@ const CrudTable = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      mode: "no-cors",
     });
 
     try {
