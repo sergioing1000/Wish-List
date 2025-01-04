@@ -8,10 +8,9 @@ const CrudTable = () => {
   const [rows, setRows] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [editForm, setEditForm] = useState(["", ""]);
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [loading, setLoading] = useState(false); 
 
   const fetchItems = async () => {
-    // Create axios instance with default config
     const api = axios.create({
       baseURL: "https://wish-list-bay.vercel.app",
       headers: {
@@ -22,10 +21,6 @@ const CrudTable = () => {
     try {
 
       const response = await api.get("/api/items");
-
-      // const response = await axios.get(
-      //   "https://wish-list-bay.vercel.app/api/items"
-      // );
 
       setRows(response.data);
       console.log("Data", response.data);
@@ -41,10 +36,9 @@ const CrudTable = () => {
 
   const postData = async () => {
     console.log(rows);
-    setLoading(true); // Start loading
+    setLoading(true); 
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // Create axios instance with default config
     const api = axios.create({
       baseURL: "https://wish-list-bay.vercel.app",
       headers: {
@@ -56,11 +50,6 @@ const CrudTable = () => {
     try {
       const response = await api.post("api/save", { rows });
 
-      // const response = await axios.post(
-      //   "https://wish-list-bay.vercel.app/api/save",
-      //   { rows }
-      // );
-
       console.log("Data saved successfully:", response.data);
 
       Swal.fire({
@@ -71,7 +60,7 @@ const CrudTable = () => {
     } catch (error) {
       console.error("There was an error:", error);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false); 
     }
   };
 
@@ -119,7 +108,7 @@ const CrudTable = () => {
 
   return (
     <>
-      {loading ? ( // Render the spinner while loading
+      {loading ? ( 
         <div className="spinner-container">
           <Watch
             visible={true}
