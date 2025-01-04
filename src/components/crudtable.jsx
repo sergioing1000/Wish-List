@@ -38,6 +38,7 @@ const CrudTable = () => {
     }
   };
 
+
   const postData = async () => {
     console.log(rows);
     setLoading(true); // Start loading
@@ -49,6 +50,7 @@ const CrudTable = () => {
       headers: {
         "Content-Type": "application/json",
       },
+      withCredentials: true,
     });
 
     try {
