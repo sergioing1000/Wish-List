@@ -12,7 +12,7 @@ function LoginForm ({ onLoginSuccess }){
       e.preventDefault();
 
       // Perform login logic here
-      if (username === "user" && password === "password") {
+      if (username === "lista" && password === "deseos") {
         // Call the function passed as a prop to notify App component
         onLoginSuccess();
         console.log("Username:", username);
