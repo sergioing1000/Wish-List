@@ -11,14 +11,14 @@ function LoginForm ({ onLoginSuccess }){
     const handleSubmit = (e) => {
       e.preventDefault();
 
-      // Perform login logic here
+      
       if (username === "lista" && password === "deseos") {
-        // Call the function passed as a prop to notify App component
+        
         onLoginSuccess();
         console.log("Username:", username);
         console.log("Password:", password);
 
-        // Show SweetAlert2 Toast
+        
         const Toast = Swal.mixin({
           toast: true,
           position: "center",
@@ -45,7 +45,7 @@ function LoginForm ({ onLoginSuccess }){
           text: "Invalid credentials!!",
         });
 
-        //alert("Invalid credentials");
+
       }
 
     };
@@ -57,7 +57,6 @@ function LoginForm ({ onLoginSuccess }){
     <div
       style={{
         maxWidth: "240px",
-        // height: "400px",
         margin: "auto",
         marginTop: "30px",
         padding: "20px",

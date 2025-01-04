@@ -9,10 +9,10 @@ import { useState } from "react";
 
 function App() {
 
-  // State to manage visibility of CrudTable
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Function to handle successful login
+
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
   };
