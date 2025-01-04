@@ -43,14 +43,13 @@ const CrudTable = () => {
     setLoading(true); // Start loading
     await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    const yourToken = "abcabc";
-
     // Create axios instance with default config
     const api = axios.create({
       baseURL: "https://wish-list-bay.vercel.app",
       headers: {
         "Content-Type": "application/json",
       },
+      mode: "no-cors",
     });
 
     try {
