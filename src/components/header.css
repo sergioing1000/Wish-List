@@ -38,10 +38,15 @@
 
 .header_left{
   display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .header_right{
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
 }
 .language-selector {
   background-color:  #3C344F;

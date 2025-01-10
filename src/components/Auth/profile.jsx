@@ -1,19 +1,21 @@
 
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import LogoutButton from "../../components/Auth/LogoutButton.jsx";
+import profileIcon from "../../assets/icons/profile.svg";
+
+import "./profile.css";
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     isAuthenticated && (
-      <div>
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
+      <div className="profileContainer">
+        <img src={profileIcon} alt="profile icon" width={45} />
+        <span>{user.name}</span>
+        <LogoutButton/>
       </div>
     )
   );

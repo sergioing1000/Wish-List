@@ -1,0 +1,11 @@
+.profileContainer{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: rgb(189, 180, 207, 0.3);
+    padding: 10px;
+    border-radius: 25px;
+    color: #FFFFFF;
+}

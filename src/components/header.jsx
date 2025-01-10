@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import Profile from "../components/Auth/profile.jsx";
 import "./header.css";
 
 import pencilSvg from "../assets/icons/pencil.svg";
 import worldsvg from "../assets/icons/world.svg";
+
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,12 +25,15 @@ function Header() {
         </div>
 
         <div className="header_right">
+
+          <Profile />
+
           <img src={worldsvg} alt="Pencil Icon" height={30} />
           {/* Language Selector */}
           <select
             className="language-selector"
             style={{
-              fontFamily: "HachiMaruPop"
+              fontFamily: "HachiMaruPop",
             }}
           >
             <option value="en">En</option>
