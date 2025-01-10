@@ -1,0 +1,32 @@
+import React, { useState, useEffect } from "react";
+
+import "./welcomepict.css";
+import imgbackground from "../assets/picts/welcomepict.webp";
+import imgbackground2 from "../assets/picts/welcomepict2.webp";
+
+const welcomepict = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const images = [imgbackground, imgbackground2];
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * images.length);
+    setSelectedImage(images[randomIndex]);
+  }, []); // The empty dependency array ensures this runs only once when the component mounts.
+
+  return (
+    <div className="welcomecontainer">
+      {selectedImage && (
+        <img
+          className="wpict"
+          src={selectedImage}
+          alt="Random"
+          style={{ marginTop: "20px", width: "320px" }}
+        />
+      )}
+    </div>
+  );
+}
+
+export default welcomepict;
+

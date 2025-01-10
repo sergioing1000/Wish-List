@@ -1,7 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Auth0Provider } from "@auth0/auth0-react";
-import LoginButton from "../src/components/Auth/LoginButton.jsx";
 import LogoutButton from "../src/components/Auth/LogoutButton.jsx";
 import "./index.css";
 import App from "./app.jsx";
@@ -19,9 +18,7 @@ createRoot(document.getElementById("root")).render(
       }}
     >
       <App />
-
-      <LoginButton />
-      <LogoutButton />
     </Auth0Provider>
   </StrictMode>
 );
+  

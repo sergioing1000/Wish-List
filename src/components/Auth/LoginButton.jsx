@@ -5,15 +5,12 @@ const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
   return (
-
-    
-
     <div style={{ marginBottom: "15px" }}>
           <button
             onClick={() => loginWithRedirect()}
             type="submit"
             style={{
-              width: "40%",
+              width: "30%",
               padding: "10px",
               backgroundColor: "#4BF218",
               color: "white",
@@ -26,8 +23,6 @@ const LoginButton = () => {
             Sign In
           </button>
         </div>
-
-
 );
 };
 

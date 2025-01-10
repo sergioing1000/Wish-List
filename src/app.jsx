@@ -1,5 +1,7 @@
 import Header from './components/header.jsx';
+import WelcomePict from "./components/welcomepict.jsx";
 import LoginForm from "./components/loginform.jsx";
+import LoginButton from "../src/components/Auth/LoginButton.jsx";
 import CrudTable from "./components/crudtable.jsx";
 import Footer from "./components/footer.jsx";
 
@@ -21,10 +23,13 @@ function App() {
   return (
     <>
       <Header />
+      <WelcomePict />
+      <LoginButton />
 
-      {!isLoggedIn && <LoginForm onLoginSuccess={handleLoginSuccess} />}
-      {isLoggedIn && <CrudTable />}
-
+      {/* This is a JSX comment */}
+      {/*!isLoggedIn && <LoginForm onLoginSuccess={handleLoginSuccess} />*/}
+      {/*isLoggedIn && <CrudTable />*/}
+      
       <Footer></Footer>
     </>
   );
