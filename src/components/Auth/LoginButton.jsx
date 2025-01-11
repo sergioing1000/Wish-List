@@ -4,9 +4,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
+  const { isAuthenticated } = useAuth0();
+
   return (
-    <div style={{ marginBottom: "15px" }}>
-          <button
+    <>
+      {!isAuthenticated && (
+        <button
             onClick={() => loginWithRedirect()}
             type="submit"
             style={{
@@ -22,7 +25,8 @@ const LoginButton = () => {
           >
             Sign In
           </button>
-        </div>
+      )}
+    </> 
 );
 };
 

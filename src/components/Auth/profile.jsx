@@ -7,7 +7,7 @@ import profileIcon from "../../assets/icons/profile.svg";
 import "./profile.css";
 
 const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
 
 
   return (

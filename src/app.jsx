@@ -4,6 +4,7 @@ import LoginForm from "./components/loginform.jsx";
 import LoginButton from "../src/components/Auth/LoginButton.jsx";
 import CrudTable from "./components/crudtable.jsx";
 import Footer from "./components/footer.jsx";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 import "./app.css";
