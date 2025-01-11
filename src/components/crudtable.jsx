@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { Watch } from "react-loader-spinner";
+
 import "./crudtable.css";
 
 const CrudTable = () => {
@@ -11,6 +12,7 @@ const CrudTable = () => {
   const [loading, setLoading] = useState(false); 
 
   const fetchItems = async () => {
+
     const api = axios.create({
       baseURL: "https://wish-list-bay.vercel.app",
       headers: {

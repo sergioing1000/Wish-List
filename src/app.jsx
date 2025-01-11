@@ -1,6 +1,5 @@
 import Header from './components/header.jsx';
 import WelcomePict from "./components/welcomepict.jsx";
-import LoginForm from "./components/loginform.jsx";
 import LoginButton from "../src/components/Auth/LoginButton.jsx";
 import CrudTable from "./components/crudtable.jsx";
 import Footer from "./components/footer.jsx";
@@ -21,16 +20,19 @@ function App() {
     setIsLoggedIn(true);
   };
 
+  const {isAuthenticated } = useAuth0();
+
   return (
     <>
       <Header />
       <WelcomePict />
       <LoginButton />
 
+      {isAuthenticated && <CrudTable />}
+
       {/* This is a JSX comment */}
       {/*!isLoggedIn && <LoginForm onLoginSuccess={handleLoginSuccess} />*/}
       {/*isLoggedIn && <CrudTable />*/}
-      
       <Footer></Footer>
     </>
   );
