@@ -1,0 +1,12 @@
+.profileContainer{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    /*background-color: rgb(189, 180, 207, 0.3);*/
+    
+    border-radius: 25px;
+    color: #FFFFFF;
+}
