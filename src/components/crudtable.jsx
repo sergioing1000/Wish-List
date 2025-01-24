@@ -1,29 +1,34 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import { Watch } from "react-loader-spinner";
+
+import Delete from "../assets/icons/delete.svg";
+import Edit from "../assets/icons/edit.svg";
+import Acept from "../assets/icons/accept.svg";
+import Cancel from "../assets/icons/cancel.svg";
 
 import "./crudtable.css";
 
 const CrudTable = () => {
   const [rows, setRows] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
-  const [editForm, setEditForm] = useState(["", ""]);
+  const [editForm, setEditForm] = useState(["", "", ""]);
   const [loading, setLoading] = useState(false); 
 
   const fetchItems = async () => {
 
     const api = axios.create({
       baseURL: "https://wish-list-bay.vercel.app",
+      //baseURL: "http://localhost:3000",
       headers: {
         "Content-Type": "application/json",
       },
     });
 
     try {
-
       const response = await api.get("/api/items");
-
       setRows(response.data);
       console.log("Data", response.data);
     } catch (error) {
@@ -43,6 +48,7 @@ const CrudTable = () => {
 
     const api = axios.create({
       baseURL: "https://wish-list-bay.vercel.app",
+      //baseURL: "http://localhost:3000",
       headers: {
         "Content-Type": "application/json",
       },
@@ -70,8 +76,10 @@ const CrudTable = () => {
     fetchItems();
   }, []);
 
+  const { user, isAuthenticated } = useAuth0();
+
   const addRow = () => {
-    const newRow = ["New Item", "0"];
+    const newRow = ["New Item", "0", user.name];
     setRows((prevRows) => [...prevRows, newRow]);
   };
 
@@ -110,7 +118,7 @@ const CrudTable = () => {
 
   return (
     <>
-      {loading ? ( 
+      {loading ? (
         <div className="spinner-container">
           <Watch
             visible={true}
@@ -140,11 +148,12 @@ const CrudTable = () => {
             <table className="CrudTable">
               <thead className="TableHeader">
                 <tr className="TableHeader">
-                  <th style={{ width: "68%", textAlign: "center" }}>
+                  <th style={{ width: "67%", textAlign: "center" }}>
                     Description
                   </th>
-                  <th style={{ width: "12%", textAlign: "center" }}>Qty</th>
-                  <th style={{ width: "20%", textAlign: "center" }}>Actions</th>
+                  <th style={{ width: "8%", textAlign: "center" }}>Qty</th>
+                  <th style={{ width: "15%", textAlign: "center" }}>User</th>
+                  <th style={{ width: "10%", textAlign: "center" }}>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -170,12 +179,20 @@ const CrudTable = () => {
                             className="custom_number_input"
                           />
                         </td>
+                        <td>
+                          <input
+                            type="text"
+                            value={editForm[2]}
+                            onChange={(e) => handleInputChange(e, 2)}
+                            className="custom_text_input"
+                          />
+                        </td>
                         <td className="AcctionsRow">
                           <button className="editButton" onClick={saveEdit}>
-                            Save
+                            <img src={Acept} alt="Acept" />
                           </button>
                           <button className="deleteButton" onClick={cancelEdit}>
-                            Cancel
+                            <img src={Cancel} alt="Cancel" />
                           </button>
                         </td>
                       </>
@@ -183,6 +200,7 @@ const CrudTable = () => {
                       <>
                         <td style={{ textAlign: "left" }}>{row[0]}</td>
                         <td style={{ textAlign: "center" }}>{row[1]}</td>
+                        <td style={{ textAlign: "center" }}>{row[2]}</td>
                         <td
                           className="AcctionsRow"
                           style={{ textAlign: "center" }}
@@ -191,13 +209,13 @@ const CrudTable = () => {
                             className="editButton"
                             onClick={() => editRow(rowIndex)}
                           >
-                            Edit
+                            <img src={Edit} alt="Edit" />
                           </button>
                           <button
                             className="deleteButton"
                             onClick={() => deleteRow(rowIndex)}
                           >
-                            Delete
+                            <img src={Delete} alt="Delete" />
                           </button>
                         </td>
                       </>
