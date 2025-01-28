@@ -101,6 +101,14 @@ tr:nth-child(even) {
     align-self: center;
 }
 
+.custom_user_input{
+    width: 90%;
+    border: 2px solid #365D81;
+    border-radius: 5px;
+    font-family: HachiMaruPop;
+    text-align: center;
+}
+
 .editButton{
     background-color: #b6efa5;
     color: "white";

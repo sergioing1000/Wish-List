@@ -179,7 +179,7 @@ const CrudTable = () => {
                             type="text"
                             value={editForm[2]}
                             disabled
-                            className="custom_user_input"
+                            className="custom_text_input"
                           />
                         </td>
                         <td className="AcctionsRow">
