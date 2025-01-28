@@ -19,7 +19,7 @@ const CrudTable = () => {
 
   const fetchItems = async () => {
     const api = axios.create({
-      baseURL: "http://localhost:3000",
+      baseURL: "https://wish-list-bay.vercel.app",
       headers: {
         "Content-Type": "application/json",
       },
@@ -44,7 +44,7 @@ const CrudTable = () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     const api = axios.create({
-      baseURL: "http://localhost:3000",
+      baseURL: "https://wish-list-bay.vercel.app",
       headers: {
         "Content-Type": "application/json",
       },
