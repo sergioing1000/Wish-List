@@ -1,13 +1,13 @@
 @font-face {
-  font-family: 'HachiMaruPop';
-  src: url('../assets/fonts/hachimarupop-regular.ttf') format('truetype');
+  font-family: 'indieflower';
+  src: url('../assets/fonts/indieflower.ttf') format('truetype');
 }
 
 .header {
   padding: 1rem;
   background-color: #3C344F;
   color: white;
-  font-family: HachiMaruPop;
+  font-family: indieflower, serif;
 }
 
 .burger-menu {

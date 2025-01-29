@@ -30,9 +30,6 @@ function App() {
 
       {isAuthenticated && <CrudTable />}
 
-      {/* This is a JSX comment */}
-      {/*!isLoggedIn && <LoginForm onLoginSuccess={handleLoginSuccess} />*/}
-      {/*isLoggedIn && <CrudTable />*/}
       <Footer></Footer>
     </>
   );

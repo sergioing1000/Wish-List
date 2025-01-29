@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'HachiMaruPop';
-  src: url('../assets/fonts/hachimarupop-regular.ttf') format('truetype');
+  font-family: 'indieflower';
+  src: url('../assets/fonts/indieflower.ttf') format('truetype');
 }
 
 .spinner-container{
@@ -8,7 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: HachiMaruPop;
+    font-family: indieflower, serif;
     margin: 30px;
 }
 
@@ -17,7 +17,8 @@
     flex-direction: row;
     justify-content: space-around;
     margin-top: 20px;
-    font-family: HachiMaruPop;
+    font-family: indieflower, serif;
+    font-size: 18px;
 }
 
 .CrudTableContainer2{
@@ -25,7 +26,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
-    font-family: HachiMaruPop;
+    font-family: indieflower, serif;
 }
 
 .crudTableAddButton{
@@ -37,7 +38,7 @@
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
-    font-family: HachiMaruPop;
+    font-family: indieflower, serif;
 }
 
 .crudTableSaveButton{
@@ -49,7 +50,7 @@
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
-    font-family: HachiMaruPop;
+    font-family: indieflower, serif;
 }
 .CrudTableTableContainer{
     display: flex;
@@ -59,6 +60,7 @@
 
 .CrudTable{
     width: 80%;
+    font-size: 18px;
     table-layout: fixed;
 }
 
@@ -90,14 +92,14 @@ tr:nth-child(even) {
     width: 90%;
     border: 2px solid #365D81;
     border-radius: 5px;
-    font-family: HachiMaruPop;
+    font-family: indieflower, serif;
 }
 
 .custom_number_input{
     width: 50%;
     border: 2px solid #365D81;
     border-radius: 5px;
-    font-family: HachiMaruPop;
+    font-family: indieflower, serif;
     align-self: center;
 }
 
@@ -105,7 +107,7 @@ tr:nth-child(even) {
     width: 90%;
     border: 2px solid #365D81;
     border-radius: 5px;
-    font-family: HachiMaruPop;
+    font-family: indieflower, serif;
     text-align: center;
 }
 
@@ -115,8 +117,7 @@ tr:nth-child(even) {
     border-color: #30AE0A;
     border-radius: 3px;
     cursor: pointer;
-    /* box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4); */
-    font-family: HachiMaruPop;   
+    font-family: indieflower, serif;
 }
 
 .deleteButton{
@@ -125,6 +126,15 @@ tr:nth-child(even) {
     border-color: #F43A15;
     border-radius: 3px;
     cursor: pointer;
-    /* box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4); */
-    font-family: HachiMaruPop;   
+    font-family: indieflower, serif;
+}
+
+.rotate-y {
+  animation: rotateY 1s infinite linear;
+}
+
+@keyframes rotateY {
+  to {
+    transform: rotateY(360deg);
+  }
 }

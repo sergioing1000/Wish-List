@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'indieflower';
+  src: url('../assets/fonts/indieflower.ttf') format('truetype');
+}
+
 .welcomecontainer {
       width: 100%;  
       height: 320px; 
@@ -6,7 +11,7 @@
       align-items: center;
       text-align: center;
       color: white;
-      font-family: Arial, sans-serif;
+      font-family: indieflower, sans-serif;
 }
 
 .wpict{

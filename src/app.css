@@ -6,9 +6,8 @@
 }
 
 @font-face {
-  font-family: 'HachiMaruPop';
-  src: url('./assets/fonts/hachimarupop-regular.ttf') format('truetype');
-  
+  font-family: 'indieflower';
+  src: url('./assets/fonts/indieflower.ttf') format('truetype');
 }
 
 @keyframes logo-spin {

@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'HachiMaruPop';
-  src: url('../assets/fonts/hachimarupop-regular.ttf') format('truetype');
+  font-family: 'indieflower';
+  src: url('../assets/fonts/indieflower.ttf') format('truetype');
 }
 
 .footer_container{
@@ -8,7 +8,7 @@
     color: white;
     padding: 20px;
     margin-top: 50px;
-    font-family: HachiMaruPop;  
+    font-family: indieflower,serif;  
 }
 
 .footer_container h3{
