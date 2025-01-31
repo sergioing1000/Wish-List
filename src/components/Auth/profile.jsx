@@ -1,4 +1,4 @@
-
+// import React, { useEffect } from "react";
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import LogoutButton from "../../components/Auth/LogoutButton.jsx";
@@ -12,9 +12,12 @@ const Profile = () => {
   return (
     isAuthenticated && (
       <div className="profileContainer">
-        <img src={profileIcon} alt="profile icon" width={45} />
+        <div>
+          <img src={profileIcon} alt="profile icon" width={45} />
+          <img src={user.picture} alt="User Picture" width={45} />
+        </div>
         <span>{user.name}</span>
-        <LogoutButton/>
+        <LogoutButton />
       </div>
     )
   );

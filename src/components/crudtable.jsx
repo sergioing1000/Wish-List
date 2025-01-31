@@ -6,6 +6,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import { Watch } from "react-loader-spinner";
 
+import ToggleButton from "./ToggleButton.jsx";
+
 import Delete from "../assets/icons/delete.svg";
 import Edit from "../assets/icons/edit.svg";
 import Accept from "../assets/icons/accept.svg";
@@ -30,10 +32,16 @@ const CrudTable = () => {
 
   const { user } = useAuth0(); // Get user info from Auth0
 
+
+  const email = user.email;
+  let collection = "Collection";
+
   // Fetch items from the API
   const fetchItems = async () => {
     try {
-      const response = await api.get("/api/items");
+      const response = await api.get("/api/items", {
+        params: { collection },
+      });
       setRows(response.data);
       console.log("Data fetched:", response.data);
     } catch (error) {
@@ -144,7 +152,16 @@ const CrudTable = () => {
     });
   };
 
+  const handleToggle = (value) => {
+    if (value){
+      collection = "Collection";
+    } else {
+      collection = user.email;
+    }
 
+    console.log("Collection is:", collection);
+    fetchItems();
+  };
 
   return (
     <>
@@ -162,6 +179,17 @@ const CrudTable = () => {
       ) : (
         <>
           {/* Action Buttons */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "10px"              
+            }}
+          >
+            <ToggleButton onToggle={handleToggle} />
+          </div>
+
           <div className="CrudTableContainer1">
             <button className="crudTableAddButton" onClick={addRow}>
               Add
@@ -177,10 +205,10 @@ const CrudTable = () => {
             <table className="CrudTable">
               <thead className="TableHeader">
                 <tr>
-                  <th>Description</th>
-                  <th>Qty</th>
-                  <th>User</th>
-                  <th>Actions</th>
+                  <th>Descripción</th>
+                  <th>Cantidad</th>
+                  <th>Usuario</th>
+                  <th>Editar</th>
                 </tr>
               </thead>
               <tbody>
