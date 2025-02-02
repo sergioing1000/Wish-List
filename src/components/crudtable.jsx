@@ -6,8 +6,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import { Watch } from "react-loader-spinner";
 
-import ToggleButton from "./ToggleButton.jsx";
-
 import Delete from "../assets/icons/delete.svg";
 import Edit from "../assets/icons/edit.svg";
 import Accept from "../assets/icons/accept.svg";
@@ -17,8 +15,8 @@ import "./crudtable.css";
 
 // Create reusable Axios instance
 const api = axios.create({
-  //baseURL: "http://localhost:3000",
-  baseURL: "https://wish-list-bay.vercel.app",
+  baseURL: "http://localhost:3000",
+  // baseURL: "https://wish-list-bay.vercel.app",
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
@@ -39,9 +37,7 @@ const CrudTable = () => {
   // Fetch items from the API
   const fetchItems = async () => {
     try {
-      const response = await api.get("/api/items", {
-        params: { collection },
-      });
+      const response = await api.get("/api/items");
       setRows(response.data);
       console.log("Data fetched:", response.data);
     } catch (error) {
@@ -54,7 +50,7 @@ const CrudTable = () => {
   const postData = async () => {
     setLoading(true);
     try {
-      const response = await api.post("/api/save", { rows });
+      const response = await api.post("/api/save", {rows});
       console.log("Data saved successfully:", response.data);
 
       Swal.fire({
@@ -113,12 +109,11 @@ const CrudTable = () => {
   };
 
   // Handle input change during editing
-
-    const handleInputChange = (e, fieldIndex) => {
-      const updatedForm = [...editForm];
-      updatedForm[fieldIndex] = e.target.value;
-      setEditForm(updatedForm);
-    };
+  const handleInputChange = (e, fieldIndex) => {
+    const updatedForm = [...editForm];
+    updatedForm[fieldIndex] = e.target.value;
+    setEditForm(updatedForm);
+  };
 
   // Delete a row
   const deleteRow = (rowIndex) => {
@@ -152,17 +147,6 @@ const CrudTable = () => {
     });
   };
 
-  const handleToggle = (value) => {
-    if (value){
-      collection = "Collection";
-    } else {
-      collection = user.email;
-    }
-
-    console.log("Collection is:", collection);
-    fetchItems();
-  };
-
   return (
     <>
       {loading ? (
@@ -179,17 +163,6 @@ const CrudTable = () => {
       ) : (
         <>
           {/* Action Buttons */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "10px"              
-            }}
-          >
-            <ToggleButton onToggle={handleToggle} />
-          </div>
-
           <div className="CrudTableContainer1">
             <button className="crudTableAddButton" onClick={addRow}>
               Add
@@ -200,7 +173,6 @@ const CrudTable = () => {
           </div>
 
           {/* Table */}
-
           <div className="CrudTableContainer2">
             <table className="CrudTable">
               <thead className="TableHeader">
