@@ -28,7 +28,8 @@ function Header() {
 
           <Profile />
 
-          <img src={worldsvg} alt="Pencil Icon" height={30} />
+          <img src={worldsvg} alt="World Icon" height={30} />
+
           {/* Language Selector */}
           <select
             className="language-selector"
@@ -48,13 +49,13 @@ function Header() {
         <nav className="menu">
           <ul>
             <li>
-              <a href="#home">Home</a>
+              <a href="#home">Inicio</a>
             </li>
             <li>
-              <a href="#about">About</a>
+              <a href="#about">Acerca</a>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <a href="#contact">Contactenos</a>
             </li>
           </ul>
         </nav>

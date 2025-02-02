@@ -10,24 +10,24 @@ const LoginButton = () => {
     <>
       {!isAuthenticated && (
         <button
-            onClick={() => loginWithRedirect()}
-            type="submit"
-            style={{
-              width: "30%",
-              padding: "10px",
-              backgroundColor: "#4BF218",
-              color: "white",
-              bordercolor: "black",
-              borderRadius: "5px",
-              cursor: "pointer",
-              boxShadow: "3px 3px 10px rgba(0, 0, 0, 0.4)",
-            }}
-          >
-            Sign In
-          </button>
+          onClick={() => loginWithRedirect()}
+          type="submit"
+          style={{
+            width: "30%",
+            padding: "10px",
+            backgroundColor: "#4BF218",
+            color: "#3C344F",
+            bordercolor: "black",
+            borderRadius: "5px",
+            cursor: "pointer",
+            boxShadow: "3px 3px 10px rgba(0, 0, 0, 0.4)",
+          }}
+        >
+          Entrar
+        </button>
       )}
-    </> 
-);
+    </>
+  );
 };
 
 export default LoginButton;

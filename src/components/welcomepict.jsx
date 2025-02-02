@@ -14,7 +14,7 @@ const welcomepict = () => {
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * images.length);
     setSelectedImage(images[randomIndex]);
-  }, []); // The empty dependency array ensures this runs only once when the component mounts.
+  }, []);
 
   const { isAuthenticated } = useAuth0();
 
