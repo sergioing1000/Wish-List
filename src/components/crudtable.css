@@ -116,8 +116,13 @@ tr:nth-child(even) {
     color: "white";
     border-color: #30AE0A;
     border-radius: 3px;
+    margin: 2px;
     cursor: pointer;
     font-family: indieflower, serif;
+}
+
+.editButton:hover{
+  background-color: #3BD40C;
 }
 
 .deleteButton{
@@ -125,8 +130,34 @@ tr:nth-child(even) {
     color: "white";
     border-color: #F43A15;
     border-radius: 3px;
+    margin: 2px;
     cursor: pointer;
     font-family: indieflower, serif;
+}
+
+.deleteButton:hover {
+  background-color: #F77F64;
+}
+
+
+.moveButton {
+  background: #8CAFCF;
+  color: white;
+  border-color: #2A4865;
+  border-radius: 3px;
+  padding: 5px 8px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.moveButton:hover {
+  background: #42729E;
+}
+
+.moveButton:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .rotate-y {
@@ -137,4 +168,107 @@ tr:nth-child(even) {
   to {
     transform: rotateY(360deg);
   }
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  animation: zoomIn 0.3s ease;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.close-button {
+  background: #3C344F;
+  color: white;
+  border: none;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+
+@keyframes slideUp {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
+}
+
+.moving-up {
+  animation: slideUp 0.5s ease;
+}
+
+.moving-down {
+  animation: slideDown 0.5s ease;
+}
+
+.fade-color {
+  transition: color 0.5s ease, transform 0.3s ease;
+}
+
+.fade-color:hover {
+  transform: scale(1.05);
+}
+
+th:first-child, td:first-child {
+  text-align: center;
+  width: 40px;
 }

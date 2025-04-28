@@ -6,6 +6,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import { Watch } from "react-loader-spinner";
 
+
+import UpArrow from "../assets/icons/uparrow.svg";
+import DownArrow from "../assets/icons/downarrow.svg";
 import Delete from "../assets/icons/delete.svg";
 import Edit from "../assets/icons/edit.svg";
 import Accept from "../assets/icons/accept.svg";
@@ -15,8 +18,8 @@ import "./crudtable.css";
 
 // Create reusable Axios instance
 const api = axios.create({
-  // baseURL: "http://localhost:3000",
-  baseURL: "https://wish-list-bay.vercel.app",
+  baseURL: "http://localhost:3000",
+  // baseURL: "https://wish-list-bay.vercel.app",
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
@@ -25,12 +28,20 @@ const CrudTable = () => {
   // State declarations
   const [rows, setRows] = useState([]); // Stores the table rows
   const [editIndex, setEditIndex] = useState(null); // Tracks the index of the row being edited
-  const [editForm, setEditForm] = useState(["", "", ""]); // Stores the form data for editing
+  const [editForm, setEditForm] = useState(["", "", "", ""]); // Now 4 fields: description, quantity, user, image
   const [loading, setLoading] = useState(false); // Tracks loading state
+  const [modalImage, setModalImage] = useState(null);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const [movingRow, setMovingRow] = useState(null);
+  const [moveDirection, setMoveDirection] = useState(null);
+
+  const colors = ["black", "red", "blue", "green"];
+  const [descriptionColors, setDescriptionColors] = useState({});
+
+
 
   const { user } = useAuth0(); // Get user info from Auth0
-
-
   const email = user.email;
   let collection = "Collection";
 
@@ -50,7 +61,7 @@ const CrudTable = () => {
   const postData = async () => {
     setLoading(true);
     try {
-      const response = await api.post("/api/save", {rows});
+      const response = await api.post("/api/save", { rows });
       console.log("Data saved successfully:", response.data);
 
       Swal.fire({
@@ -72,7 +83,7 @@ const CrudTable = () => {
 
   // Add a new row
   const addRow = () => {
-    const newRow = ["New Item", "0", user.name];
+    const newRow = ["New Item", "1", user.name, ""]; // Now includes empty image field
     setRows((prevRows) => [...prevRows, newRow]);
   };
 
@@ -142,10 +153,99 @@ const CrudTable = () => {
             icon: "rotate-y",
           },
         });
-
       }
     });
   };
+
+  const closeModal = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setModalImage(null);
+      setIsClosing(false);
+    }, 300); // This matches the animation duration (0.3s)
+  };
+
+  const moveRowUp = (index) => {
+    if (index === 0) return;
+
+    setMovingRow(index);
+    setMoveDirection("up");
+
+    setRows((prevRows) => {
+      const newRows = [...prevRows];
+      [newRows[index - 1], newRows[index]] = [
+        newRows[index],
+        newRows[index - 1],
+      ];
+      return newRows;
+    });
+
+    setTimeout(() => {
+      setMovingRow(null);
+      setMoveDirection(null);
+    }, 500); // Reset after animation
+  };
+
+  const moveRowDown = (index) => {
+    if (index === rows.length - 1) return;
+
+    setMovingRow(index);
+    setMoveDirection("down");
+
+    setRows((prevRows) => {
+      const newRows = [...prevRows];
+      [newRows[index], newRows[index + 1]] = [
+        newRows[index + 1],
+        newRows[index],
+      ];
+      return newRows;
+    });
+
+    setTimeout(() => {
+      setMovingRow(null);
+      setMoveDirection(null);
+    }, 500); // Reset after animation
+  };
+
+
+  // Handle capturing the image from camera
+  const handleImageCapture = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.src = event.target.result;
+
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const maxWidth = 600; // Max width for resized image
+        const scaleSize = maxWidth / img.width;
+        canvas.width = maxWidth;
+        canvas.height = img.height * scaleSize;
+
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        const resizedBase64 = canvas.toDataURL("image/jpeg", 0.8); // 80% quality
+
+        const updatedForm = [...editForm];
+        updatedForm[3] = resizedBase64;
+        setEditForm(updatedForm);
+      };
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const cycleDescriptionColor = (rowIndex) => {
+    setDescriptionColors((prev) => {
+      const currentColorIndex = prev[rowIndex] ?? 0; // Default to 0 (black) if undefined
+      const nextColorIndex = (currentColorIndex + 1) % colors.length;
+      return { ...prev, [rowIndex]: nextColorIndex };
+    });
+  };
+
 
   return (
     <>
@@ -177,9 +277,11 @@ const CrudTable = () => {
             <table className="CrudTable">
               <thead className="TableHeader">
                 <tr>
+                  <th>#</th>
                   <th>Descripción</th>
                   <th>Cantidad</th>
                   <th>Usuario</th>
+                  <th>Imagen</th> {/* New header */}
                   <th>Editar</th>
                 </tr>
               </thead>
@@ -187,8 +289,19 @@ const CrudTable = () => {
                 {rows.map((row, rowIndex) => (
                   <tr
                     key={rowIndex}
-                    className={editIndex === rowIndex ? "editing" : ""}
+                    className={`
+                        ${editIndex === rowIndex ? "editing" : ""}
+                        ${
+                          movingRow === rowIndex
+                            ? moveDirection === "up"
+                              ? "moving-up"
+                              : "moving-down"
+                            : ""
+                        }
+                    `}
                   >
+                    <td>{rowIndex + 1}</td>
+                    
                     {editIndex === rowIndex ? (
                       // Edit Mode
                       <>
@@ -220,6 +333,15 @@ const CrudTable = () => {
                           />
                         </td>
                         <td>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            capture="environment"
+                            onChange={(e) => handleImageCapture(e)}
+                            className="custom_file_input"
+                          />
+                        </td>
+                        <td>
                           <button className="editButton" onClick={saveEdit}>
                             <img src={Accept} alt="Accept" />
                           </button>
@@ -231,10 +353,44 @@ const CrudTable = () => {
                     ) : (
                       // View Mode
                       <>
-                        <td>{row[0]}</td>
+                        <td
+                          onClick={() => cycleDescriptionColor(rowIndex)}
+                          style={{
+                            color: colors[descriptionColors[rowIndex] ?? 0],
+                            cursor: "pointer",
+                            userSelect: "none",
+                          }}
+                          className="fade-color"
+                        >
+                          {row[0]}
+                        </td>
+
                         <td>{row[1]}</td>
                         <td>{row[2]}</td>
                         <td>
+                          {row[3] ? (
+                            <img
+                              src={row[3]}
+                              alt="Imagen"
+                              style={{
+                                width: "60px",
+                                height: "auto",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => setModalImage(row[3])} // Open modal on click
+                            />
+                          ) : (
+                            "No Image"
+                          )}
+                        </td>
+                        <td className="action-buttons">
+                          <button
+                            className="moveButton"
+                            onClick={() => moveRowUp(rowIndex)}
+                            disabled={rowIndex === 0}
+                          >
+                            <img src={UpArrow} alt="UpArrow" />
+                          </button>
                           <button
                             className="editButton"
                             onClick={() => editRow(rowIndex)}
@@ -247,6 +403,13 @@ const CrudTable = () => {
                           >
                             <img src={Delete} alt="Delete" />
                           </button>
+                          <button
+                            className="moveButton"
+                            onClick={() => moveRowDown(rowIndex)}
+                            disabled={rowIndex === rows.length - 1}
+                          >
+                            <img src={DownArrow} alt="DownArrow" />
+                          </button>
                         </td>
                       </>
                     )}
@@ -255,6 +418,23 @@ const CrudTable = () => {
               </tbody>
             </table>
           </div>
+          {/* Modal to display big image */}
+          {modalImage && (
+            <div
+              className={`modal-overlay ${isClosing ? "fade-out" : ""}`}
+              onClick={closeModal}
+            >
+              <div
+                className="modal-content"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button className="close-button" onClick={closeModal}>
+                  ✖
+                </button>
+                <img src={modalImage} alt="Full Size" className="modal-image" />
+              </div>
+            </div>
+          )}
         </>
       )}
     </>
