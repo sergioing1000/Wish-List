@@ -61,6 +61,7 @@ const CrudTable = () => {
   const postData = async () => {
     setLoading(true);
     try {
+      console.log(rows);
       const response = await api.post("/api/save", { rows });
       console.log("Data saved successfully:", response.data);
 
