@@ -1,5 +1,3 @@
-// Refactored CrudTable Component
-
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -278,9 +276,8 @@ const CrudTable = () => {
                 <tr>
                   <th>#</th>
                   <th>Descripción</th>
-                  <th>Cantidad</th>
-                  <th>Usuario</th>
-                  <th>Imagen</th> {/* New header */}
+                  <th style={{ width: "80px" }}>Cantidad</th>
+                  <th>Imagen</th>
                   <th>Editar</th>
                 </tr>
               </thead>
@@ -321,14 +318,7 @@ const CrudTable = () => {
                             value={editForm[1]}
                             onChange={(e) => handleInputChange(e, 1)}
                             className="custom_number_input"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            name="user"
-                            value={editForm[2]}
-                            disabled
-                            className="custom_user_input"
+                            style={{ width: "60px" }} // Reduced width
                           />
                         </td>
                         <td>
@@ -364,8 +354,7 @@ const CrudTable = () => {
                           {row[0]}
                         </td>
 
-                        <td>{row[1]}</td>
-                        <td>{row[2]}</td>
+                        <td style={{ width: "60px" }}>{row[1]}</td>
                         <td>
                           {row[3] ? (
                             <img
@@ -431,21 +420,34 @@ const CrudTable = () => {
                   ✖
                 </button>
                 <img src={modalImage} alt="Full Size" className="modal-image" />
-                <button
-                  className="delete-image-button"
-                  onClick={() => {
-                    const rowIndex = rows.findIndex((row) => row[3] === modalImage);
-                    if (rowIndex !== -1) {
-                      const updatedRows = [...rows];
-                      updatedRows[rowIndex][3] = ""; // Clear the image
-                      setRows(updatedRows);
-                      Swal.fire("Deleted", "Image deleted successfully!", "success");
-                    }
-                    closeModal();
-                  }}
-                >
-                  Delete Image
-                </button>
+                <div className="modal_bottom">
+                  <p>
+                    Usuario:{" "}
+                    {rows.find((row) => row[3] === modalImage)?.[2] ||
+                      "Unknown"}
+                  </p>
+                  <button
+                    className="delete-image-button"
+                    onClick={() => {
+                      const rowIndex = rows.findIndex(
+                        (row) => row[3] === modalImage
+                      );
+                      if (rowIndex !== -1) {
+                        const updatedRows = [...rows];
+                        updatedRows[rowIndex][3] = ""; // Clear the image
+                        setRows(updatedRows);
+                        Swal.fire(
+                          "Deleted",
+                          "Image deleted successfully!",
+                          "success"
+                        );
+                      }
+                      closeModal();
+                    }}
+                  >
+                    Delete Image
+                  </button>
+                </div>
               </div>
             </div>
           )}
