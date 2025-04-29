@@ -419,46 +419,36 @@ const CrudTable = () => {
           </div>
           {/* Modal to display big image */}
           {modalImage && (
-  <div
-    className={`modal-overlay ${isClosing ? "fade-out" : ""}`}
-    onClick={closeModal}
-  >
-    <div
-      className="modal-content"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <button className="close-button" onClick={closeModal}>
-        ✖
-      </button>
-      <img src={modalImage} alt="Full Size" className="modal-image" />
-      <button
-        className="delete-image-button"
-        onClick={() => {
-          const rowIndex = rows.findIndex((row) => row[3] === modalImage);
-          if (rowIndex !== -1) {
-            const updatedRows = [...rows];
-            updatedRows[rowIndex][3] = ""; // Clear the image
-            setRows(updatedRows);
-            Swal.fire("Deleted", "Image deleted successfully!", "success");
-          }
-          closeModal();
-        }}
-        style={{
-          marginTop: "1rem",
-          backgroundColor: "red",
-          color: "white",
-          border: "none",
-          padding: "10px 20px",
-          borderRadius: "5px",
-          cursor: "pointer",
-          fontSize: "16px",
-        }}
-      >
-        Delete Image
-      </button>
-    </div>
-  </div>
-)}
+            <div
+              className={`modal-overlay ${isClosing ? "fade-out" : ""}`}
+              onClick={closeModal}
+            >
+              <div
+                className="modal-content"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button className="close-button" onClick={closeModal}>
+                  ✖
+                </button>
+                <img src={modalImage} alt="Full Size" className="modal-image" />
+                <button
+                  className="delete-image-button"
+                  onClick={() => {
+                    const rowIndex = rows.findIndex((row) => row[3] === modalImage);
+                    if (rowIndex !== -1) {
+                      const updatedRows = [...rows];
+                      updatedRows[rowIndex][3] = ""; // Clear the image
+                      setRows(updatedRows);
+                      Swal.fire("Deleted", "Image deleted successfully!", "success");
+                    }
+                    closeModal();
+                  }}
+                >
+                  Delete Image
+                </button>
+              </div>
+            </div>
+          )}
         </>
       )}
     </>

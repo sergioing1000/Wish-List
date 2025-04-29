@@ -272,3 +272,17 @@ th:first-child, td:first-child {
   text-align: center;
   width: 40px;
 }
+
+.delete-image-button{
+  background-color: #F33F16;
+  color: white;
+  padding: 10px 15px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-image-button:hover {
+  background-color: #AE2709;
+}
