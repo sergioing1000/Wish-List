@@ -16,8 +16,8 @@ import "./crudtable.css";
 
 // Create reusable Axios instance
 const api = axios.create({
-  // baseURL: "http://localhost:3000",
-  baseURL: "https://wish-list-bay.vercel.app",
+  baseURL: "http://localhost:3000",
+  // baseURL: "https://wish-list-bay.vercel.app",
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
@@ -80,16 +80,16 @@ const CrudTable = () => {
 
   // Add a new row
   const addRow = () => {
-    const newRow = ["New Item", "1", user.name, ""]; // Now includes empty image field
+    const newRow = ["", "1", user.name, ""]; // Now includes empty image field
     setRows((prevRows) => [...prevRows, newRow]);
   };
 
   // Save all rows to the server
   const saveItems = () => {
-    if (rows.length === 0) {
-      Swal.fire("No Items", "There is nothing to save.", "info");
-      return;
-    }
+    //if (rows.length === 0) {
+    //  Swal.fire("No Items", "There is nothing to save.", "info");
+    //  return;
+    //}
     postData();
   };
 
