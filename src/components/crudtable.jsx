@@ -339,20 +339,22 @@ const CrudTable = () => {
                               className="custom_button"
                               onClick={() => setShowOptions((prev) => !prev)}
                             >
-                              📷 Upload Image
+                              🖼️ Upload Image
                             </button>
 
                             {showOptions && (
                               <div className="dropdown-menu">
                                 <button
+                                  className="dropdownbutton"
                                   onClick={() => handleOptionClick("camera")}
                                 >
-                                  📸 Take a Photo
+                                  📸
                                 </button>
                                 <button
+                                  className="dropdownbutton"
                                   onClick={() => handleOptionClick("gallery")}
                                 >
-                                  🖼️ Choose from Gallery
+                                  📂
                                 </button>
                               </div>
                             )}

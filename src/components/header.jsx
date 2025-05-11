@@ -19,13 +19,22 @@ function Header() {
           >
             ☰
           </button>
-          <h1 className="header-title">Wish List</h1>
 
+          <a
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+              display: "inline-block",
+              padding: "10px",
+            }}
+            href="https://wish-list-apeh.vercel.app/"
+          >
+            <h1 className="header-title">Wish List</h1>
+          </a>
           <img src={pencilSvg} alt="Pencil Icon" height={30} />
         </div>
 
         <div className="header_right">
-
           <Profile />
 
           <img src={worldsvg} alt="World Icon" height={30} />

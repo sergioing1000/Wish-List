@@ -302,16 +302,27 @@ th:first-child, td:first-child {
   border-radius: 6px;
   cursor: pointer;
   font-size: 16px;
+  width: 120px;
+}
+
+.image-uploader{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .dropdown-menu {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: white;
   border: 1px solid #ccc;
   border-radius: 6px;
-  width: 200px;
+  width: 85px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 10;
 }
@@ -331,4 +342,10 @@ th:first-child, td:first-child {
 
 .hidden {
   display: none;
+}
+
+.dropdownbutton{
+  display: flex;
+  justify-content: center;
+  width: 70px;
 }
