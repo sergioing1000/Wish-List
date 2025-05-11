@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+ import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import { Watch } from "react-loader-spinner";
@@ -40,9 +40,7 @@ const CrudTable = () => {
   const [showOptions, setShowOptions] = useState(false);
 
   const { user } = useAuth0(); // Get user info from Auth0
-  const email = user.email;
-  let collection = "Collection";
-
+  
   // Fetch items from the API
   const fetchItems = async () => {
     try {
