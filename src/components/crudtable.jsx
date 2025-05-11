@@ -37,6 +37,8 @@ const CrudTable = () => {
   const colors = ["black", "red", "blue", "green"];
   const [descriptionColors, setDescriptionColors] = useState({});
 
+  const [showOptions, setShowOptions] = useState(false);
+
   const { user } = useAuth0(); // Get user info from Auth0
   const email = user.email;
   let collection = "Collection";
@@ -243,6 +245,15 @@ const CrudTable = () => {
     });
   };
 
+  const handleOptionClick = (type) => {
+    setShowOptions(false);
+    if (type === "camera") {
+      document.getElementById("cameraInput").click();
+    } else {
+      document.getElementById("galleryInput").click();
+    }
+  };
+
 
   return (
     <>
@@ -321,14 +332,56 @@ const CrudTable = () => {
                             style={{ width: "60px" }} // Reduced width
                           />
                         </td>
+
                         <td>
-                          <input
+                          <div className="image-uploader">
+                            <button
+                              className="custom_button"
+                              onClick={() => setShowOptions((prev) => !prev)}
+                            >
+                              📷 Upload Image
+                            </button>
+
+                            {showOptions && (
+                              <div className="dropdown-menu">
+                                <button
+                                  onClick={() => handleOptionClick("camera")}
+                                >
+                                  📸 Take a Photo
+                                </button>
+                                <button
+                                  onClick={() => handleOptionClick("gallery")}
+                                >
+                                  🖼️ Choose from Gallery
+                                </button>
+                              </div>
+                            )}
+
+                            {/* Hidden Inputs */}
+                            <input
+                              id="cameraInput"
+                              type="file"
+                              accept="image/*"
+                              capture="environment"
+                              onChange={handleImageCapture}
+                              className="hidden"
+                            />
+                            <input
+                              id="galleryInput"
+                              type="file"
+                              accept="image/*"
+                              onChange={handleImageCapture}
+                              className="hidden"
+                            />
+                          </div>
+
+                          {/* <input
                             type="file"
                             accept="image/*"
                             capture="environment"
                             onChange={(e) => handleImageCapture(e)}
                             className="custom_file_input"
-                          />
+                          /> */}
                         </td>
                         <td>
                           <button className="editButton" onClick={saveEdit}>
